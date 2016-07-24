@@ -25,8 +25,8 @@ module.exports = {
         'code': authCode,
         'redirect_uri': 'http://localhost:9000/callback',
         'state': this.defautClientRoute,
-        'username': '503B7EDF169D45C7893B7F66EC930917_ingestor',
-        'password': 'team7pwd'
+        'username': 'zeppelin-admin',
+        'password': 'f2277671a6da'
       },
       headers: {
         'Authorization': 'Basic ' + this.base64ClientCredential
