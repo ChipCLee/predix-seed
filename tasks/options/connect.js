@@ -10,10 +10,10 @@ var config = {
    * You'll need to update clientId, serverUrl, and base64ClientCredential.
    */
   uaa: {
-    clientId: 'predix-seed',
-    serverUrl: 'https://etc.predix-uaa-staging.grc-apps.svc.ice.ge.com',
+    clientId: 'ingestor.9cf33ce37bf64c5681b515a6f6aadf47',
+    serverUrl: 'https://d9ef106c-7048-486e-a79f-9c80827b8a14.predix-uaa.run.aws-usw02-pr.ice.predix.io',
     defaultClientRoute: '/about',
-    base64ClientCredential: 'cHJlZGl4LXNlZWQ6TTBhVzdrTmZRRndyTTZ3ZHJpV2h3bVc2ck1HQ045Q0x1cnI5VnI3elc0cz0='
+    base64ClientCredential: 'aW5nZXN0b3IuOWNmMzNjZTM3YmY2NGM1NjgxYjUxNWE2ZjZhYWRmNDc6'
   },
   /**
    * --------- ADD YOUR SECURE ROUTES HERE ------------
