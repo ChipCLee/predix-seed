@@ -9,7 +9,7 @@ function exchange_code_for_token (code)
         '/_internal/_access_token',
         {
             method = ngx.HTTP_POST,
-            body = 'grant_type=authorization_code&code='..code..'&redirect_uri=https%3A%2F%2F'..ngx.var.host..'%2Fcallback&state='..targetUrl
+            body = 'grant_type=password&code='..code..'&redirect_uri=https%3A%2F%2F'..ngx.var.host..'%2Fcallback&state='..targetUrl
         }
     )
     local json = cjson.decode(response.body)
