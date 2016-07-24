@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: team-7
+  - name: team7
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
