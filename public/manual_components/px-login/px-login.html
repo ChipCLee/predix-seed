@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../../bower_components/polymer/polymer.html"/>
 
 <!--
 Element providing a login/logout button that integrates nicely with Cloud Foundry's UAA.
@@ -26,29 +26,27 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
       document.head.appendChild(script);
     }
   </script>
-  <link rel="import" type="css" href="css/px-login.css"/>
+
   <template>
-    <div id="logincontainer" class="login">
-      <template is="dom-if" if="{{!userInfo.user_name}}">
-        <button class="btn btn--bare" on-click="loginHandler">
-          <i class="fa fa-user text--center u-mr--"></i>
-          <span>Sign In</span>
-        </button>
-      </template>
-      <template is="dom-if" if="{{userInfo.user_name}}">
-        <button class="btn btn--bare">
-          <i class="fa fa-user text--center"></i>
-          <span class="u-mh--">{{userInfo.user_name}}</span>
-          <i class="fa fa-angle-up"></i>
-        </button>
-        <ul class="dropdown-menu list-bare">
-          <template is="dom-repeat" items="{{menuItems}}">
-            <li on-click="menuItemHandler" url$="{{item.url}}"><a>{{item.label}}</a></li>
-          </template>
-          <li on-click="logoutHandler"><a>Sign Out</a></li>
-        </ul>
-      </template>
-    </div>
+
+    <template is="dom-if" if="{{!userInfo.user_name}}">
+
+      <button class="btn btn--bare" on-click="loginHandler">
+        <i class="fa fa-user text--center u-mr--"></i>
+        <span>Sign In</span>
+      </button>
+
+    </template>
+
+    <template is="dom-if" if="{{userInfo.user_name}}">
+
+      <div class="user">
+        <div id="esp-user-profile" data-percent="65" style="height: 130px; width: 130px; line-height: 100px; padding: 15px;" class="easy-pie-chart"><img src="images/users/04.jpg" alt="" class="avatar img-circle"><span class="status bg-success"></span></div>
+        <h4 class="fs-16 text-muted mt-15 mb-5 fw-300" ng-show="userInfo.user_name">{{ userInfo.user_name }}</h4>
+      </div>
+
+    </template>
+
   </template>
 </dom-module>
 
