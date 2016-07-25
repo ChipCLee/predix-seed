@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: solarify
+  - name: solarify-2
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
