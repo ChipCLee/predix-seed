@@ -4,11 +4,11 @@
     <h3 class="widget-title">Update Form</h3>
   </div>
   <div class="widget-body">
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="form" name="form">
       <div class="form-group">
         <label for="name" class="col-sm-3 control-label">Name</label>
         <div class="col-sm-9">
-          <textarea id="name" rows="3" class="form-control" ng-model="data.name"></textarea>
+          <input type="text" id="name" class="form-control" ng-model="data.name">
         </div>
       </div>
       <div class="form-group">
@@ -18,8 +18,20 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="city" class="col-sm-3 control-label">City</label>
+        <div class="col-sm-9">
+          <input type="text" id="city" class="form-control" ng-model="data.city">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state" class="col-sm-3 control-label">State</label>
+        <div class="col-sm-9">
+          <input type="text" id="state" class="form-control" ng-model="data.state">
+        </div>
+      </div>
+      <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="submit" class="btn btn-success">Save</button>
+          <a href="" ng-click="save()" class="btn btn-success">Save</a>
         </div>
       </div>
     </form>

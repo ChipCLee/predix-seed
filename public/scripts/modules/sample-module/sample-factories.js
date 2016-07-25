@@ -22,7 +22,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 url: '/api/asset-service/?components=FULL&type=:type',
                 isArray: true,
                 transformResponse: function (data) {
-                    return PredixTransformService.appendPredixUUIDAsID(JSON.parse(data));
+                    return JSON.parse(data);
                 },
                 interceptor: {
                     responseError: function(e) {
@@ -44,6 +44,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 }
             },
             save: {
+              url: '/api/asset-service/:id',
                 method: 'POST',
                 isArray: true,
                 transformRequest: function (data) {
@@ -59,11 +60,57 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 }
             },
             update: {
-                method: 'PUT',
+                url: '/api/asset-service/:id',
+                method: 'PATCH',
                 isArray: true,
                 transformRequest: function (data) {
                     data.updatedAt = Date.now();
-                    data = PredixTransformService.appendPredixUUIDAsID([data]);
+                    var objectKeys = Object.keys(data);
+                    var patchArray = [];
+                    console.log(data, objectKeys);
+                    for (var i = 0; i < objectKeys.length; i++) {
+
+                      var property = objectKeys[i];
+
+                      var toPush = {
+                        'op' : 'add',
+                      };
+
+                      if(property === 'name' || property === 'description') {
+
+                        toPush.path = '/' + property;
+
+                        if(data[property] === undefined) {
+
+                          toPush.value = '';
+
+                        } else {
+
+                          toPush.value = data[property];
+                        }
+
+                      }
+                      else {
+                        toPush.path = '/attributes/' + property;
+                        if(data[property] === undefined) {
+
+                          toPush.value = {
+                            'type' : 'string',
+                            'value' : [ '' ]
+                          };
+
+                        } else {
+
+                          toPush.value = {
+                            'type' : 'string',
+                            'value' : [ data[property] ]
+                          };
+                        }
+
+                      }
+                      patchArray.push(toPush);
+                    }
+                    data = patchArray;
                     return angular.toJson(data);
                 },
                 interceptor: {

@@ -16,13 +16,20 @@ define(['angular', './sample-module'], function (angular, controllers) {
     }]);
 
 
-    controllers.controller('SolarpanelUpdateCtrl', ['$scope', '$log', 'entry', function ($scope, $log, entry) {
+    controllers.controller('SolarpanelUpdateCtrl', ['$scope', '$log', 'entry', 'resource', function ($scope, $log, entry, resource) {
         $scope.data = entry;
 
         $scope.save = function() {
             if(!$scope.form.$invalid) {
-                $scope.data.$update({id: $scope.data.id}, function() {
-                    //successToast.show({text: 'Entry update successful'});
+                var updateData = {
+                  name: $scope.data.name,
+                  description: $scope.data.description,
+                  city: $scope.data.city,
+                  state: $scope.data.state
+                };
+                resource.solarpanel.update({id: $scope.data.id}, updateData, function() {
+                  toastr.options = { closeButton: true, showMethod: 'fadeIn', hideMethod: 'fadeOut', timeOut: '3200' };
+                  toastr.success('Successfully updated ' + $scope.data.name);
                 });
             }
         };
