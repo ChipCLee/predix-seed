@@ -54,5 +54,8 @@
     "rjs-build-analysis": "0.0.3",
     "time-grunt": "^0.4.0",
     "vulcanize": "1.14.8"
+  },
+  "dependencies": {
+    "gravatar": "^1.5.2"
   }
 }
