@@ -1,18 +1,6 @@
 "use strict";
 $(document).ready(function() {
-    $("#esp-user-profile").easyPieChart({
-        barColor: "#0667D6",
-        trackColor: "rgba(0,0,0,0)",
-        scaleColor: !1,
-        scaleLength: 0,
-        lineCap: "round",
-        lineWidth: 3,
-        size: 130,
-        animate: {
-            duration: 2e3,
-            enabled: !0
-        }
-    }), $(".header-color").on("click", function() {
+    $(".header-color").on("click", function() {
         var a = $(this).attr("data-color"),
             s = $("body").attr("data-header-color");
         $("body").removeClass(s).addClass(a).attr("data-header-color", a)
