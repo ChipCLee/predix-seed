@@ -35,15 +35,15 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'
             })
-            .state('asset', {
+            .state('solarpanel_list', {
                 parent: 'secure',
-                url: '/asset',
-                templateUrl: 'views/asset.html',
-                controller: 'AssetCtrl',
+                url: '/asset/solarpanel',
+                templateUrl: 'views/asset/solarpanel/list.html',
+                controller: 'SolarpanelListCtrl',
                 resolve: {
-                    Resource: 'apiResource',
-                    entry: ['apiResource', function(Resource){
-                        return new Resource.solarpanels();
+                    resource: 'apiResource',
+                    entries: ['apiResource', function(resource){
+                        return resource.solarpanel.query().$promise;
                     }]
                 }
             })
@@ -60,6 +60,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
         $urlRouterProvider.otherwise(function ($injector) {
             var $state = $injector.get('$state');
             //document.querySelector('px-app-nav').markSelected('/dashboards');
+            console.log('Cant find the state, redirecting to dashboard');
             $state.go('dashboards');
         });
 

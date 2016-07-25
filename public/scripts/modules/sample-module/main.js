@@ -5,7 +5,7 @@ define([
     './sample-service',
     './sample-factories',
     './dashboard-controller',
-    './asset-controller',
+    './solarpanel-controller',
     './sample-controller',
     './predix-asset-service',
     './predix-transform-service',

@@ -96,10 +96,10 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
                             if (xmlhttp.status === 200) {
                                 try {
                                     var userInfoResponse = JSON.parse(xmlhttp.responseText);
-                                    if(userInfoResponse.email !== undefined && CryptoJS !== undefined && CryptoJS.MD5 !== undefined) {
-                                      userInfoResponse.gravatar = "https://gravatar.com/avatar/" + CryptoJS.MD5(userInfoResponse.email.toLowerCase());
-                                    }
-                                    console.log(userInfoResponse);
+                                    // if(userInfoResponse.email !== undefined && CryptoJS !== undefined && CryptoJS.MD5 !== undefined) {
+                                    //   userInfoResponse.gravatar = "https://gravatar.com/avatar/" + CryptoJS.MD5(userInfoResponse.email.toLowerCase());
+                                    // }
+                                    userInfoResponse.gravatar = 'https://gravatar.com/avatar/d334ddee5bb423cd6e28c4fb2a4f1910';
                                     resolve(userInfoResponse);
                                 }
                                 catch (e) {
