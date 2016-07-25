@@ -22,7 +22,10 @@
       <td>{{ entry.name }}</td>
       <td>{{ entry.description }}</td>
       <td>{{ entry.attributes.city.value[0] }}, {{ entry.attributes.state.value[0] }}</td>
-      <td class="text-right"><a href="/asset/solarpanel/{{ entry.sourceKey }}/update" class="btn btn-primary"><span class="fa fa-pencil-square-o"></span> Edit</a></td>
+      <td class="text-right">
+        <a href="/asset/solarpanel/{{ entry.sourceKey }}/update" class="btn btn-primary"><span class="fa fa-pencil-square-o"></span> Edit</a>
+        <a href="" ng-click="delete()" class="btn btn-danger"><span class="fa fa-times"></span> Delete</a>
+      </td>
     </tr>
   </tbody>
 </table>
