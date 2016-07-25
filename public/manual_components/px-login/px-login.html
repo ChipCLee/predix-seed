@@ -41,7 +41,7 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
     <template is="dom-if" if="{{userInfo.user_name}}">
 
       <div class="user">
-        <div id="esp-user-profile" data-percent="65" style="height: 130px; width: 130px; line-height: 100px; padding: 15px;" class="easy-pie-chart"><img src="images/users/04.jpg" alt="" class="avatar img-circle"><span class="status bg-success"></span></div>
+        <div id="esp-user-profile" data-percent="65" style="height: 130px; width: 130px; line-height: 100px; padding: 15px;" class="easy-pie-chart"><img src="{{ userInfo.gravatar }}" alt="" class="avatar img-circle"><span class="status bg-success"></span></div>
         <h4 class="fs-16 text-muted mt-15 mb-5 fw-300">{{ userInfo.user_name }}</h4>
       </div>
 
@@ -95,7 +95,12 @@ Element providing a login/logout button that integrates nicely with Cloud Foundr
                         if (xmlhttp.readyState === 4) {
                             if (xmlhttp.status === 200) {
                                 try {
-                                    resolve(JSON.parse(xmlhttp.responseText));
+                                    var userInfoResponse = JSON.parse(xmlhttp.responseText);
+                                    if(userInfoResponse.email !== undefined && CryptoJS !== undefined && CryptoJS.MD5 !== undefined) {
+                                      userInfoResponse.gravatar = "https://gravatar.com/avatar/" + CryptoJS.MD5(userInfoResponse.email.toLowerCase());
+                                    }
+                                    console.log(userInfoResponse);
+                                    resolve(userInfoResponse);
                                 }
                                 catch (e) {
                                     reject(e);

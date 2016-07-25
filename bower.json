@@ -36,7 +36,8 @@
     "require-css": "0.1.1",
     "requirejs": "https://github.com/jrburke/requirejs.git#2.1.18",
     "requirejs-plugins": "1.0.2",
-    "google-analytics": "~0.1.0"
+    "google-analytics": "~0.1.0",
+    "crypto-js": "^3.1.6"
   },
   "resolutions": {
     "web-animations-js": "~2.0.0"
