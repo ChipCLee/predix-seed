@@ -9,7 +9,8 @@ define([
     'routes',
     'interceptors',
     'px-datasource',
-    'ng-bind-polymer'
+    'ng-bind-polymer',
+    'uuid',
 ], function ($, angular) {
     'use strict';
 
@@ -23,6 +24,7 @@ define([
         'app.interceptors',
         'sample.module',
         'predix.datasource',
+        'uuid',
         'px.ngBindPolymer'
     ]);
 

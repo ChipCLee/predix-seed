@@ -32,6 +32,7 @@ require.config({
     paths: {
         'bower_components': '../bower_components',
         'px-datasource': '../bower_components/px-datasource/dist/px-datasource.min',
+        'uuid': '../bower_components/angular-uuid-service/angular-uuid-service',
 
         'ng-bind-polymer': '../bower_components/ng-bind-polymer/ng-bind-polymer',
 

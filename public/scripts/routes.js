@@ -35,6 +35,18 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 templateUrl: 'views/dashboards.html',
                 controller: 'DashboardsCtrl'
             })
+            .state('asset', {
+                parent: 'secure',
+                url: '/asset',
+                templateUrl: 'views/asset.html',
+                controller: 'AssetCtrl',
+                resolve: {
+                    Resource: 'apiResource',
+                    entry: ['apiResource', function(Resource){
+                        return new Resource.solarpanels();
+                    }]
+                }
+            })
             .state('blankpage', {
                 url: '/blankpage',
                 templateUrl: 'views/blank-page.html'
