@@ -67,7 +67,7 @@ require.config({
         'normalize': '../bower_components/require-css/normalize',
 
         lodash: '../bower_components/lodash/dist/lodash.min',
-        jquery: '../manual_components/jquery/jquery',
+        jquery: '../bower_components/jquery/dist/jquery',
         'momentjs': '../bower_components/moment/moment',
         'angular-momentjs': '../bower_components/angular-momentjs/angular-momentjs'
     },
