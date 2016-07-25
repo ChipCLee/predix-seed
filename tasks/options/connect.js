@@ -28,6 +28,10 @@ var config = {
       url: 'https://predix-views.run.aws-usw02-pr.ice.predix.io',
       instanceId: 'your-view-service-guid-here',
       pathRewrite: { '^/api/view-service': '/v1'}
+    },
+    '/api/asset-service(.*)': {
+      url: 'https://apm-asset-hackapm.run.aws-usw02-pr.ice.predix.io/v1$1',
+      instanceId: '213e857b-6bb6-4bed-bbb0-2c8c8eb12753'
     }
   }
 };

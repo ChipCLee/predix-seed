@@ -34,10 +34,6 @@ module.exports = {
     };
 
     request(options, function (err, response, body) {
-      console.log("Options", options);
-      console.log("Error", err);
-      console.log("Response", res);
-      console.log("Body", body);
 
       if (!err && response.statusCode == 200) {
         var res = JSON.parse(body);
@@ -101,14 +97,13 @@ module.exports = {
           next(err);
         });
       } else if (req.url.match('/userinfo')) {
-        console.log(uaa);
         if (uaa.hasValidSession()) {
           res.end(JSON.stringify({email: uaa.user.email, user_name: uaa.user.user_name}));
         } else {
           next(401);
         }
       } else if (req.url.match('/logout')) {
-        console.log("\n\nDeleiting user sesssion");
+        console.log("\n\nDeleting user sesssion");
         uaa.deleteSession();
         next();
       }
