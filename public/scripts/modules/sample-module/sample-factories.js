@@ -19,6 +19,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 }
             },
             query: {
+                url: '/api/asset-service/?components=FULL&type=:type',
                 isArray: true,
                 transformResponse: function (data) {
                     return PredixTransformService.appendPredixUUIDAsID(JSON.parse(data));
@@ -85,7 +86,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
         };
 
 
-        var solarpanelResource = $resource('/api/asset-service/solarpanel/:id', {}, predixBaseConfiguration);
+        var solarpanelResource = $resource('/api/asset-service/', {}, predixBaseConfiguration);
 
         return {
             solarpanel: solarpanelResource,

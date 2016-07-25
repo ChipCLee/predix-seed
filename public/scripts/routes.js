@@ -43,8 +43,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 resolve: {
                     resource: 'apiResource',
                     entries: ['apiResource', function(resource){
-                        console.log(resource);
-                        return resource.solarpanel.query().$promise;
+                        return resource.solarpanel.query({type: '153961f4-9e25-49eb-83ca-fa89dab1cceb'}).$promise;
                     }]
                 }
             })
