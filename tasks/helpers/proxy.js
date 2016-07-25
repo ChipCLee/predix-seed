@@ -18,7 +18,12 @@ var serviceProxy = {
         while (!urlFound) {
           if (req.url.match(routes[i])) {
             req.headers['authorization'] = auth.accessToken;
-            req.headers['predix-zone-id'] = proxyConfig[routes[i]].instanceId;
+            if(proxyConfig[routes[i]].instanceId !== undefined) {
+              req.headers['predix-zone-id'] = proxyConfig[routes[i]].instanceId;
+            }
+            if(proxyConfig[routes[i]].tenant !== undefined) {
+              req.headers['tenant'] = proxyConfig[routes[i]].tenant;
+            }
             console.log('proxy headers', req.headers);
             urlFound = true;
           }

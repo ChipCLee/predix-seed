@@ -24,14 +24,10 @@ var config = {
    * You'll need to update the url and instanceId.
    */
   proxy: {
-    '/api/view-service': {
-      url: 'https://predix-views.run.aws-usw02-pr.ice.predix.io',
-      instanceId: 'your-view-service-guid-here',
-      pathRewrite: { '^/api/view-service': '/v1'}
-    },
-    '/api/asset-service(.*)': {
-      url: 'https://apm-asset-hackapm.run.aws-usw02-pr.ice.predix.io/v1$1',
-      instanceId: '213e857b-6bb6-4bed-bbb0-2c8c8eb12753'
+    '/api/asset-service/(.*)': {
+      url: 'https://apm-asset-hackapm.run.aws-usw02-pr.ice.predix.io/v1',
+      tenant: '503B7EDF169D45C7893B7F66EC930917',
+      pathRewrite: { '^/api/asset-service': '/assets'}
     }
   }
 };
