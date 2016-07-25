@@ -11,6 +11,7 @@ define([
     'px-datasource',
     'ng-bind-polymer',
     'uuid',
+    'angular-resource'
 ], function ($, angular) {
     'use strict';
 
@@ -23,6 +24,7 @@ define([
         'app.routes',
         'app.interceptors',
         'sample.module',
+        'ngResource',
         'predix.datasource',
         'uuid',
         'px.ngBindPolymer'
