@@ -67,7 +67,7 @@ require.config({
         'normalize': '../bower_components/require-css/normalize',
 
         lodash: '../bower_components/lodash/dist/lodash.min',
-        jquery: '../bower_components/jquery/dist/jquery.min',
+        jquery: '../manual_components/jquery/jquery'
 
     },
     priority: [
