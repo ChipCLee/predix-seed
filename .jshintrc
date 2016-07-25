@@ -25,6 +25,7 @@
 		"window": false,
 		"define": false,
 		"vRuntime": false,
+		"toastr": false,
         "Promise": false,
 		/* ANGULAR MOCKS */
 		"inject": false,

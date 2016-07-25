@@ -24,8 +24,7 @@ define(['angular', './sample-module'], function (angular, controllers) {
                 var updateData = {
                   name: $scope.data.name,
                   description: $scope.data.description,
-                  city: $scope.data.city,
-                  state: $scope.data.state
+                  attributes: $scope.data.attributes
                 };
                 resource.solarpanel.update({id: $scope.data.id}, updateData, function() {
                   toastr.options = { closeButton: true, showMethod: 'fadeIn', hideMethod: 'fadeOut', timeOut: '3200' };

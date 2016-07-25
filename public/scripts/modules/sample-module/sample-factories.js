@@ -64,14 +64,30 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 method: 'PATCH',
                 isArray: true,
                 transformRequest: function (data) {
+
                     data.updatedAt = Date.now();
-                    var objectKeys = Object.keys(data);
+                    var objectKeys = Object.keys(data.attributes);
                     var patchArray = [];
-                    console.log(data, objectKeys);
+
+                    if(data.name !== undefined) {
+                      patchArray.push({
+                        'op': 'add',
+                        'path': '/name',
+                        'value': data.name
+                      });
+                    }
+
+                    if(data.description !== undefined) {
+                      patchArray.push({
+                        'op': 'add',
+                        'path': '/description',
+                        'value': data.description
+                      });
+                    }
+
                     for (var i = 0; i < objectKeys.length; i++) {
 
                       var property = objectKeys[i];
-
                       var toPush = {
                         'op' : 'add',
                       };
@@ -92,7 +108,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                       }
                       else {
                         toPush.path = '/attributes/' + property;
-                        if(data[property] === undefined) {
+                        if(data.attributes[property] === undefined) {
 
                           toPush.value = {
                             'type' : 'string',
@@ -103,7 +119,7 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
 
                           toPush.value = {
                             'type' : 'string',
-                            'value' : [ data[property] ]
+                            'value' : [ data.attributes[property].value[0] ]
                           };
                         }
 
