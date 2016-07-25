@@ -18,13 +18,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="entry in data track by $index">
+    <tr ng-repeat="entry in data track by $index" ng-if="entry.attributes.active.value[0] !== '0'">
       <td>{{ entry.name }}</td>
       <td>{{ entry.description }}</td>
       <td>{{ entry.attributes.city.value[0] }}, {{ entry.attributes.state.value[0] }}</td>
       <td class="text-right">
         <a href="/asset/solarpanel/{{ entry.sourceKey }}/update" class="btn btn-primary"><span class="fa fa-pencil-square-o"></span> Edit</a>
-        <a href="" ng-click="delete()" class="btn btn-danger"><span class="fa fa-times"></span> Delete</a>
+        <a href="" ng-click="delete(entry)" class="btn btn-danger"><span class="fa fa-times"></span> Delete</a>
       </td>
     </tr>
   </tbody>

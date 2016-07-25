@@ -6,11 +6,24 @@ define(['angular', './sample-module'], function (angular, controllers) {
         $scope.data = entries;
 
         $scope.delete = function(item) {
-            item.$delete({id: item.id}, function() {
-                resource.solarpanel.query(function(data) {
-                    $scope.data = data;
-                });
+
+          var updateData = {
+            attributes: {
+              'active': {
+                'type': 'string',
+                'value': [ '0' ]
+              }
+            }
+          };
+
+          resource.solarpanel.update({id: item.id}, updateData, function() {
+            toastr.options = { closeButton: true, showMethod: 'fadeIn', hideMethod: 'fadeOut', timeOut: '3200' };
+            toastr.success('Successfully deleted solar panel');
+            resource.solarpanel.query({type: '153961f4-9e25-49eb-83ca-fa89dab1cceb'}, function(data) {
+                $scope.data = data;
             });
+          });
+
         };
 
     }]);

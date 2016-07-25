@@ -22,7 +22,14 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 url: '/api/asset-service/?components=FULL&type=:type',
                 isArray: true,
                 transformResponse: function (data) {
-                    return JSON.parse(data);
+                  data = JSON.parse(data);
+                  for (var i = 0; i < data.length; i++) {
+                    var entry = data[i];
+                    if(entry.attributes.active !== undefined && entry.attributes.active.value[0] === '0') {
+                      data.splice(i, 1);
+                    }
+                  }
+                  return PredixTransformService.appendPredixUUIDAsID(data);
                 },
                 interceptor: {
                     responseError: function(e) {
