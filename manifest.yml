@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: team7-test
+  - name: solarify
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
