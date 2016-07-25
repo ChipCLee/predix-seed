@@ -37,13 +37,17 @@ define(['angular', './sample-module'], function (angular, controllers) {
 
     controllers.controller('SolarpanelCreateCtrl', ['$scope', '$log', 'entry', '$state', 'Resource', 'PredixTransformService', function ($scope, $log, entry, $state, resource, PredixTransformService) {
         $scope.data = entry;
-        $scope.data.uri = '/asset/solarpanel/' + PredixTransformService.generateUUID();
+
 
         $scope.save = function() {
             if(!$scope.form.$invalid) {
+                $scope.data.type = '/assetTypes/153961f4-9e25-49eb-83ca-fa89dab1cceb';
+                $scope.data.sourceKey = PredixTransformService.generateUUID();
+                console.log($scope.data);
                 $scope.data.$save(function() {
                     $state.go('solarpanel_list', {}, { reload: true });
-                    //successToast.show({text: 'Entry creation successful'});
+                    toastr.options = { closeButton: true, showMethod: 'fadeIn', hideMethod: 'fadeOut', timeOut: '3200' };
+                    toastr.success('Successfully added ' + $scope.data.name);
                 });
             }
         };

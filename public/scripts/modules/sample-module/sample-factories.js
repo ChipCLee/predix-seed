@@ -44,18 +44,50 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 }
             },
             save: {
-              url: '/api/asset-service/:id',
+              url: '/api/asset-service',
                 method: 'POST',
                 isArray: true,
                 transformRequest: function (data) {
                     data.createdAt = Date.now();
                     data.updatedAt = Date.now();
+                    var objectKeys = Object.keys(data.attributes);
+                    var patchArray = {};
+
+                    if(data.name !== undefined) {
+                      patchArray.name = data.name;
+                    }
+
+                    if(data.sourceKey !== undefined) {
+                      patchArray.sourceKey = data.sourceKey;
+                    }
+
+                    if(data.sourceKey !== undefined) {
+                      patchArray.type = data.type;
+                    }
+
+                    if(data.description !== undefined) {
+                      patchArray.description = data.description;
+                    }
+
+                    for (var i = 0; i < objectKeys.length; i++) {
+
+                      var property = objectKeys[i];
+                      var attributes = {};
+
+                      attributes[property] = {};
+                      attributes[property].value = [ data.attributes[property].value[0] ];
+
+                      patchArray.attributes = attributes;
+                    }
+
+                    data = patchArray;
+
                     return angular.toJson([data]);
                 },
                 interceptor: {
                     responseError: function(e) {
                         console.warn('Problem making request to backend: ', e);
-                        $injector.get('$state').go('oops');
+                        //$injector.get('$state').go('oops');
                     }
                 }
             },

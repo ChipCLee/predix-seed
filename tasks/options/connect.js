@@ -24,7 +24,12 @@ var config = {
    * You'll need to update the url and instanceId.
    */
   proxy: {
-    '/api/asset-service/(.*)': {
+    '/api/asset-service(.*)': {
+      url: 'https://apm-asset-hackapm.run.aws-usw02-pr.ice.predix.io/v1',
+      tenant: '503B7EDF169D45C7893B7F66EC930917',
+      pathRewrite: { '^/api/asset-service': '/assets'}
+    },
+    '/api/asset-service': {
       url: 'https://apm-asset-hackapm.run.aws-usw02-pr.ice.predix.io/v1',
       tenant: '503B7EDF169D45C7893B7F66EC930917',
       pathRewrite: { '^/api/asset-service': '/assets'}

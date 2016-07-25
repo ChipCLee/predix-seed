@@ -1,7 +1,8 @@
 <div class="page-header clearfix">
   <div class="row">
-    <div class="col-sm-6">
-      <h4 class="mt-0 mb-5">Solar Panels</h4>
+    <div class="col-sm-12">
+      <a href="/asset/solarpanel/create" class="btn btn-success pull-right"><span class="fa fa-plus"></span> Add new</a>
+      <h4 class="">Solar Panels</h4>
     </div>
   </div>
 </div>
@@ -20,7 +21,7 @@
     <tr ng-repeat="entry in data track by $index">
       <td>{{ entry.name }}</td>
       <td>{{ entry.description }}</td>
-      <td>{{ entry.attributes.City.value[0] }}, {{ entry.attributes.State.value[0] }}</td>
+      <td>{{ entry.attributes.city.value[0] }}, {{ entry.attributes.state.value[0] }}</td>
       <td class="text-right"><a href="/asset/solarpanel/{{ entry.sourceKey }}/update" class="btn btn-primary"><span class="fa fa-pencil-square-o"></span> Edit</a></td>
     </tr>
   </tbody>
