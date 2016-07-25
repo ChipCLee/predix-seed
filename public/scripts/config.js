@@ -67,8 +67,9 @@ require.config({
         'normalize': '../bower_components/require-css/normalize',
 
         lodash: '../bower_components/lodash/dist/lodash.min',
-        jquery: '../manual_components/jquery/jquery'
-
+        jquery: '../manual_components/jquery/jquery',
+        'momentjs': '../bower_components/moment/moment',
+        'angular-momentjs': '../bower_components/angular-momentjs/angular-momentjs'
     },
     priority: [
         'jquery',
@@ -97,6 +98,9 @@ require.config({
         },
         'app': {
             deps: ['angular']
+        },
+        'angular-momentjs': {
+            'deps': ['angular', 'momentjs']
         }
 
     }

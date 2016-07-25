@@ -11,7 +11,8 @@ define([
     'px-datasource',
     'ng-bind-polymer',
     'uuid',
-    'angular-resource'
+    'angular-resource',
+    'angular-momentjs'
 ], function ($, angular) {
     'use strict';
 
