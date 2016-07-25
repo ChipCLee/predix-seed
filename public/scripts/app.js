@@ -60,7 +60,7 @@ define([
                 }
             }
             else {
-                // unexpected error
+              console.log(error);
             }
         });
     }]);

@@ -6,7 +6,7 @@ define(['angular', './sample-module'], function(angular, module) {
         var appendPredixUUIDAsID = function(entities) {
             var result = [];
             for (var i = 0; i < entities.length; i++) {
-                
+
                 var entity = entities[i];
                 var splitUri = entity.uri.split('/');
                 var entityUuid = splitUri.pop();
