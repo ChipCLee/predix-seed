@@ -47,6 +47,30 @@ define(['angular', 'angular-ui-router'], function(angular) {
                     }]
                 }
             })
+            .state('solarpanel_update', {
+                parent: 'secure',
+                url: '/asset/solarpanel/{id}/update',
+                templateUrl: 'views/asset/solarpanel/form.html',
+                controller: 'SolarpanelUpdateCtrl',
+                resolve: {
+                    resource: 'apiResource',
+                    entry: ['apiResource', '$stateParams', function(resource, $stateParams){
+                        return resource.solarpanel.get({id: $stateParams.id, type: '153961f4-9e25-49eb-83ca-fa89dab1cceb'}).$promise;
+                    }]
+                }
+            })
+            .state('solarpanel_create', {
+                parent: 'secure',
+                url: '/asset/solarpanel/create',
+                templateUrl: 'views/asset/solarpanel/form.html',
+                controller: 'SolarpanelCreateCtrl',
+                resolve: {
+                    Resource: 'apiResource',
+                    entry: ['apiResource', function(Resource){
+                        return new Resource.solarpanel();
+                    }]
+                }
+            })
             .state('blankpage', {
                 url: '/blankpage',
                 templateUrl: 'views/blank-page.html'

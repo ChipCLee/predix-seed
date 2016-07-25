@@ -32,7 +32,8 @@ define(['angular', './sample-module', './predix-transform-service'], function(an
                 }
             },
             get: {
-                transformResponse: function (data) {
+              url: '/api/asset-service/?components=FULL&type=:type&sourceKey=:id',
+              transformResponse: function (data) {
                     return PredixTransformService.appendPredixUUIDAsID(JSON.parse(data))[0];
                 },
                 interceptor: {
